@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Order Ice Cream  
+{% endblock %}
+{% block left %} 
+&nbsp 
+{% endblock %}  
+{% block middle %}  
+    {% if not formset %}
+        <h2 style="font-size: xx-large;">Order Ice Cream</h2>
+        <p>How many flavors would you like?</p>
+        <form method="POST">
+            {% csrf_token %}      
+            <table>{{ get_num_form  }}</table>         
+            <br>
+            <button type="submit" name="get_num_items">Next</button>   
+        </form>
+        <p>{{message}}</p>
+    {% endif %}
+    {% if formset %} 
+        <p>Hi {{user_name}}</p>      
+        <form method="POST">
+            {% csrf_token %}      
+            <table>{{ formset }}</table>         
+            <br>
+            <button type="submit" name="get_order">Order</button>   
+            <pre><strong>{{ message|linebreaks}}</strong></pre>       
+            {% if '$' in message %}
+                <a href="{% url 'order_history' %}">My Orders</a>
+            {% endif %}
+        </form>    
+    {% endif %}
+    <br><br>
+    <img src="{% static 'photo-ice-cream-3.jpg' %}">
+    <br><br>
+{% endblock %} 
+{% block right %}
+{% endblock %} 

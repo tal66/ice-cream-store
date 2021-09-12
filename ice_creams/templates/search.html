@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Search Ice Cream  
+{% endblock %}
+
+{% block left %} 
+    &nbsp 
+{% endblock %}  
+{% block middle %}  
+    <h2 style="font-size: xx-large;">Search Ice Cream
+    <img src="{% static 'search.ico' %}" style="width:30px;height:30px;"></h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <p class="sample">Sample queries: chocolate; cookie; caramel; vanilla...</p>
+        <button type="submit" name="search_by_name">Search By Name</button>
+        <button type="submit">Search By Description</button>
+    </form>
+    <br>
+    {% if result != None %}
+        <p style="font-size: 14px;">found {{result.count}} results</p>
+    {% endif %}
+    {% for ice_cream in result %}
+        <li> 
+            <a href="{% url 'info' ice_cream.id %}">{{ice_cream.name}}</a>
+        </li>
+    {% endfor %}
+    <br>
+{% endblock %} 
+{% block right %}
+{% endblock %} 

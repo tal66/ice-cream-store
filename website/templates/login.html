@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+login
+{% endblock %}
+{% block left %} 
+&nbsp 
+{% endblock %}  
+{% block middle %}  
+    <h2 style="font-size: xx-large;">Log in / Register</h2>
+    {% if user_name is None %}
+        <p>Please log in/register <strong>before</strong> making orders</p>
+        <form method="POST">
+            {% csrf_token %}      
+            <table>{{ form  }}</table>                
+            <div class="sample">sample user: Bob</div>
+            <br>
+            <button type="submit" name="login">Submit</button>   
+            <div>{{message}}</div>
+        </form>    
+    {% else %}
+        <div>{{message}}</div>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" name="logout">Logout</button> 
+        </form>  
+    {% endif %}
+{% endblock %} 
+{% block right %}
+{% endblock %} 

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+Ice Cream {{ice_cream.name}} 
+{% endblock %}
+{% block left %} 
+&nbsp 
+{% endblock %} 
+{% block middle %}  
+    <h2 style="font-size: xx-large;">Ice Cream: {{ice_cream.name}}</h2>     
+    <p  style="font-size: x-large;">{{ice_cream.description}}</p>  
+    <p><strong>Ingredients: </strong> {{ice_cream.ingredients|lower}}</p>
+    <p><strong>Allergy information: </strong> {{ice_cream.allergy_info|lower}}</p>
+    <form method="POST">
+        {% csrf_token %}    
+        <button type="submit" class="big-button" name="add_favorite">Add To Favorites</button>
+        </form> 
+    <br>
+    <div>{{message}}</div>
+    <img class="icpic" src={{ice_cream.pic_url}} href="{% url 'info' ice_cream.id %}">
+{% endblock %}   
+{% block right %}
+{% endblock %} 

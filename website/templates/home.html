@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Welcome{% endblock %}
+{% block left %} 
+    <div>&nbsp</div>
+    <img style="border-radius: 5px;max-width: 100%;" src="{% static 'photo-ice-cream-2.jpg' %}" alt="ice cream"> 
+{% endblock %}
+{% block middle %}
+    <h1>Welcome to the ice cream shop</h1>
+    <h2>Ben & Jerry's</h2>
+    <h3>There are {{num_ice_creams}} flavors:</h3>
+    <ol>
+        {% for ice_cream in all_ice_creams %}
+        <li> 
+        <a href="{% url 'info' ice_cream.id %}">{{ice_cream.name}}</a>           
+        </li>
+        {% endfor %}
+    </ol>
+    <div style="font-size: 22px;"><a href="{% url 'new_order' %}">Add new order</a></div>
+{% endblock %}  

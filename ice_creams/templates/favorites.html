@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+My Favorites 
+{% endblock %}
+{% block left %} 
+&nbsp 
+{% endblock %}  
+{% block middle %}  
+    <h2 style="font-size: xx-large;">My Favorites</h2>
+    {% if user_name %} 
+        <h3>User: {{user_name}}</h3> 
+        {% if not user_favorites %}
+            <div>Add to favorites from each ice cream info page.</div>
+        {% endif %}
+        {% for icecream in user_favorites %}
+            <p>                 
+                <strong>{{icecream.name}}</strong>: {{icecream.description}}
+                <div><a href="{% url 'info' icecream.id %}"><img class="icpic" src={{icecream.pic_url}}></a></div>              
+            </li>            
+            <p>
+        {% endfor %}
+    {% endif %}
+{% endblock %} 
+{% block right %}
+{% endblock %} 

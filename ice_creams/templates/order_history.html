@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+My Orders 
+{% endblock %}
+{% block left %} 
+&nbsp 
+{% endblock %}  
+{% block middle %}  
+    <h2 style="font-size: xx-large;">My Orders</h2>
+    {% if user_name %} 
+        <h3>User: {{user_name}}</h3> 
+        {% for order, items_list in order_dict.items %}
+            <li>                 
+                Order {{order.id}}: {{order.order_date}}             
+                <p>Total: ${{order.get_total_price}}</p>            
+                {% for orderitem in items_list %}
+                <p>{{orderitem.quantity}} x <a href="ice-cream/{{orderitem.item.id}}">{{orderitem.item}}</a></p>        
+                {% endfor %}                     
+            </li>
+            <br>
+        {% endfor %}
+        {% if order_dict %}
+            <div><strong><u>Delete order:</u> </strong></div>
+            <form method="POST">
+                {% csrf_token %}      
+                <table>{{ form  }}</table>         
+                <button type="submit" name="delete_order">Delete</button>   
+            </form>
+        {% else %}
+            <div>You don't have existing orders.</div>
+            <br>
+            <div style="font-size: 22px;"><a href="{% url 'new_order' %}">Add new order</a></div>
+        {% endif %}
+    {% endif %}
+{% endblock %} 
+{% block right %}
+{% endblock %} 

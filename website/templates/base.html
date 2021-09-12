@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Ice Cream Shop </h1>
+      </div>
+      
+      <div class="topnav" style="clear: both;">
+        <a href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'search' %}">Find Flavor</a>
+        <a href="{% url 'create' %}">Create Your Own Ice Cream</a>
+        <a href="{% url 'new_order' %}">Order Now</a>
+        <div class="topnav-right">
+          <a href="{% url 'favorites' %}">My Favorites</a>
+          <a href="{% url 'order_history' %}">My Orders</a>       
+          <a href="{% url 'login' %}">Login/Logout</a>
+      </div>
+      </div>
+      
+    {% block content %}
+    <div class="column side">{% block left %}{% endblock %}</div>
+    <div class="column middle"> {% block middle %}{% endblock %}</div>        
+    <div class="column side">{% block right %}{% endblock %}</div>
+    
+    {% endblock %}
+</body>
+</html>

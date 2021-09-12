@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Create Ice Cream  
+{% endblock %}
+{% block left %} 
+&nbsp 
+{% endblock %}  
+{% block middle %}  
+    <h2 style="font-size: xx-large;">Create Ice Cream</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <table>{{ form }}</table> 
+        <p class="sample">Sample ingredients: milk, sugar, flour, almonds</p>                       
+        <button type="submit">Create</button> 
+        <p><strong>{{ message }}</strong></p>
+    </form> 
+    <br><br>
+    <img src="{% static 'photo-ice-cream-1.jpg' %}"> 
+{% endblock %} 
+{% block right %}
+{% endblock %} 
