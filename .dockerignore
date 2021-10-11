@@ -1,0 +1,13 @@
+PRIVATE.txt
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
