@@ -1,3 +1,6 @@
+## [archived repo]
+### written for the purpose of learning python and django (2021)
+
 # ice-cream-store
 
 Python Django - Ben &amp; Jerry's ice cream store
@@ -9,9 +12,9 @@ using docker:
 1. `docker-compose build `
 2. `docker-compose up`
 
-or
+or in venv
 
-1. `python -m pip install Django` in venv
+1. `pip install Django`
 2. `python manage.py runserver`
 
 ### main features:
